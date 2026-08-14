@@ -401,3 +401,8 @@ INSERT INTO encargados (id, nombre, rol) VALUES
 (1, 'Marta Elena Rodríguez', 'Gerente de Operaciones y Logística'),
 (2, 'Roberto Carlos Suárez', 'Supervisor de Almacén Bucaramanga'),
 (3, 'Laura Camila Fuentes', 'Jefa de Bodega Piedecuesta');
+
+INSERT INTO sedes (id, nombre, ubicacion, id_municipio, capacidad_almacenamiento, id_encargado) VALUES
+(1, 'Sede Principal Girón', 'Zona Industrial Chimita, Girón', 101, 15000, 1),
+(2, 'Sede Bucaramanga Centro', 'Cra 21 # 34-12, Bucaramanga', 102, 8000, 2),
+(3, 'Sede Piedecuesta Sur', 'Anillo Vial Km 3, Piedecuesta', 103, 10000, 3);
