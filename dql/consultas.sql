@@ -82,3 +82,12 @@ WHERE id = (
     LIMIT 1
 );
 
+-- 8. Pedidos y sus totales agrupados por sede
+SELECT 
+    s.nombre AS sede,
+    COUNT(p.id) AS cantidad_pedidos,
+    SUM(p.total_sin_iva) AS subtotal_acumulado,
+    SUM(p.total_con_iva) AS total_acumulado
+FROM sedes s
+JOIN pedidos p ON s.id = p.id_sede
+GROUP BY s.id, s.nombre;
