@@ -54,3 +54,8 @@ INSERT INTO clientes (id, nombre_completo, identificacion, direccion, id_municip
 
 INSERT INTO departamentos (id, nombre) VALUES
 (1, 'Santander');
+
+INSERT INTO municipios (id, nombre, id_departamento) VALUES
+(101, 'Girón', 1),
+(102, 'Bucaramanga', 1),
+(103, 'Piedecuesta', 1);
