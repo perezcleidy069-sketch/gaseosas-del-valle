@@ -14,3 +14,19 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+-- Trigger 2: Registrar cambios de precio en auditoria_precios
+
+DELIMITER //
+CREATE TRIGGER tr_audit_cambio_precio
+AFTER UPDATE ON productos
+FOR EACH ROW
+BEGIN
+    IF OLD.precio <> NEW.precio THEN
+        INSERT INTO auditoria_precios (id_producto, precio_anterior, precio_nuevo, fecha_cambio)
+        VALUES (NEW.id, OLD.precio, NEW.precio, NOW());
+    END IF;
+END //
+
+DELIMITER ;
