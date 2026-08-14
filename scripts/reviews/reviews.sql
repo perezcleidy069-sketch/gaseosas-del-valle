@@ -16,3 +16,9 @@ CREATE VIEW vista_productos_bajo_stock AS
 SELECT id, nombre, stock_actual, stock_minimo
 FROM productos
 WHERE stock_actual <= stock_minimo;
+
+-- 3. Clientes activos (al menos un pedido)
+CREATE VIEW vista_clientes_activos AS
+SELECT DISTINCT c.id, c.nombre_completo, c.identificacion, c.correogit 
+FROM clientes c
+INNER JOIN pedidos p ON c.id = p.id_cliente;
