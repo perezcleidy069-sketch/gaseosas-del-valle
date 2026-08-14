@@ -388,3 +388,11 @@ INSERT INTO productos(id, nombre, id_categoria, precio, volumen_ml, stock_actual
 (4, 'Valle Naranjada ', 4, 5200.00, '2000ml', 400, 60),
 (5, 'Spark Uva Personal', 5, 1800.00, '250ml', 500, 70),
 (6, 'Valle Ginger Ale ', 6, 3000.00, '300ml', 340, 100);
+
+INSERT INTO categoria (id, nombre) VALUES
+(1, 'Cola'),
+(2, 'Cola Sin Azúcar'),
+(3, 'Lima-Limón'),
+(4, 'Naranja'),
+(5, 'Uva'),
+(6, 'Ginger Ale');
