@@ -17,3 +17,10 @@ CREATE TABLE departamentos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(90) NOT NULL
 ) ENGINE=InnoDB;
+
+CREATE TABLE municipios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(80) NOT NULL,
+    id_departamento INT NOT NULL,
+    FOREIGN KEY (id_departamento) REFERENCES departamentos(id)
+) ENGINE=InnoDB;
