@@ -51,3 +51,6 @@ INSERT INTO clientes (id, nombre_completo, identificacion, direccion, id_municip
 (48, 'Esperanza Castañeda', '1098765479', 'Cll 11 # 05-40, Girón', 101, '3121112233', 'esperanza.castaneda@email.com'),
 (49, 'Rafael Antonio Reyes', '1098765480', 'Cra 15 # 02-18, Piedecuesta', 103, '3132223344', 'rafael.reyes@email.com'),
 (50, 'Tatiana María Galeano', '1098765481', 'Cll 46 # 29-11, Bucaramanga', 102, '3143334455', 'tatiana.galeano@email.com');
+
+INSERT INTO departamentos (id, nombre) VALUES
+(1, 'Santander');
