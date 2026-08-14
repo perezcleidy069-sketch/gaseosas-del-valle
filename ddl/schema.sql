@@ -45,3 +45,14 @@ CREATE TABLE detalle_pedidos (
     FOREIGN KEY (id_pedido) REFERENCES pedidos(id),
     FOREIGN KEY (id_producto) REFERENCES productos(id)
 ) ENGINE=InnoDB;
+
+CREATE TABLE productos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    id_categoria INT NOT NULL,
+    precio DECIMAL(10,2) CHECK(precio > 0),
+    volumen_ml VARCHAR(100) NOT NULL,
+    stock_actual INT NOT NULL,
+    stock_minimo INT NOT NULL,
+    FOREIGN KEY (id_categoria) REFERENCES categoria(id)
+) ENGINE=InnoDB;
