@@ -24,3 +24,14 @@ CREATE TABLE municipios (
     id_departamento INT NOT NULL,
     FOREIGN KEY (id_departamento) REFERENCES departamentos(id)
 ) ENGINE=InnoDB;
+
+CREATE TABLE pedidos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    fecha DATETIME NOT NULL,
+    id_cliente INT NOT NULL,
+    id_sede INT NOT NULL,
+    total_sin_iva DECIMAL(10,2) CHECK(total_sin_iva >= 0),
+    total_con_iva DECIMAL(10,2) CHECK(total_con_iva >= 0),
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id),
+    FOREIGN KEY (id_sede) REFERENCES sedes(id)
+) ENGINE=InnoDB;
