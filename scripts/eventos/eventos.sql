@@ -19,3 +19,16 @@ BEGIN
 END //
 
 DELIMITER ;
+
+-- Evento 2: Mantenimiento mensual para purgar auditorías antiguas (cada 1 del mes a las 02:00 AM)
+DELIMITER //
+CREATE EVENT IF NOT EXISTS evt_limpiar_auditoria_antigua
+ON SCHEDULE EVERY 1 MONTH
+STARTS '2026-09-01 02:00:00'
+DO
+BEGIN
+    DELETE FROM auditoria_precios
+    WHERE fecha_cambio < NOW() - INTERVAL 1 YEAR;
+END //
+
+DELIMITER ;
