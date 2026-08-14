@@ -62,3 +62,8 @@ SELECT S.id, S.nombre,
     JOIN pedidos P On P.id_sede = S.id
     GROUP BY S.id, S.nombre
     ORDER BY 'Total de pedidos por sede' ASC;
+
+    -- 5. Buscar clientes por nombre parcial usando LIKE.
+SELECT nombre_completo, id
+	FROM clientes
+    WHERE nombre_completo LIKE 'M%';
