@@ -8,7 +8,7 @@ CREATE TABLE clientes(
     direccion VARCHAR(60) NOT NULL,
     id_municipio INT NOT NULL,
     telefono CHAR(12) NOT NULL,
-    correo_electronico varchar(50) NOT NULL UNIQUE,
+    correo varchar(50) NOT NULL UNIQUE,
     
     FOREIGN KEY (id_municipio) REFERENCES municipios(id)
 )ENGINE=InnoDB;
