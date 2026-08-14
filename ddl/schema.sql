@@ -35,3 +35,13 @@ CREATE TABLE pedidos (
     FOREIGN KEY (id_cliente) REFERENCES clientes(id),
     FOREIGN KEY (id_sede) REFERENCES sedes(id)
 ) ENGINE=InnoDB;
+
+CREATE TABLE detalle_pedidos (
+    id_pedido INT NOT NULL,
+    id_producto INT NOT NULL,
+    cantidad INT NOT NULL,
+    subtotal DECIMAL(10,2) CHECK(subtotal > 0),
+    PRIMARY KEY (id_pedido, id_producto),
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id),
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+) ENGINE=InnoDB;
