@@ -78,3 +78,12 @@ CREATE TABLE sedes (
     FOREIGN KEY (id_municipio) REFERENCES municipios(id),
     FOREIGN KEY (id_encargado) REFERENCES encargados(id)
 ) ENGINE=InnoDB;
+
+CREATE TABLE auditoria_precios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_producto INT NOT NULL,
+    precio_anterior DECIMAL(10,2),
+    precio_nuevo DECIMAL(10,2),
+    fecha_cambio DATETIME NOT NULL,
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+) ENGINE=InnoDB;
