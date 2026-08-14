@@ -48,3 +48,17 @@ GROUP BY P.id, P.nombre
 ORDER BY total_unidades_vendidas DESC
 LIMIT 3;
     
+-- 4. Mostrar clientes y la cantidad de pedidos realizados.
+SELECT C.id, C.nombre_completo,
+	COUNT(P.id) AS cantidad_pedidos_por_cliente
+	FROM clientes C
+    JOIN pedidos P on P.id_cliente = C.id
+    GROUP BY C.id, C.nombre_completo
+    ORDER BY C.id ASC;
+-- 4.1 Mostrar las sedes y la cantidades de pedidos realizados.
+SELECT S.id, S.nombre,
+	COUNT(P.id_sede) 'Total de pedidos por sede'
+	FROM sedes S
+    JOIN pedidos P On P.id_sede = S.id
+    GROUP BY S.id, S.nombre
+    ORDER BY 'Total de pedidos por sede' ASC;
