@@ -1,0 +1,93 @@
+-- CONSULTAS SQL --
+-- 1. Consultar los productos con stock por debajo del mínimo.
+
+USE gaseosas_valle;
+
+UPDATE  productos SET stock_actual = CASE id
+	WHEN 1 THEN 20
+    WHEN 6 THEN 10
+    WHEN 3 THEN 40
+END
+WHERE id IN (1,6, 3);
+
+SELECT id, nombre, stock_minimo, stock_actual
+	FROM productos
+    Where stock_actual< stock_minimo
+    ORDER BY stock_actual;
+
+    -- 2.Consultar los pedidos realizados entre dos fechas (BETWEEN).
+SELECT id, fecha, id_cliente, id_sede
+	FROM pedidos
+    WHERE fecha BETWEEN '2026-07-16 14:55:00'  AND '2026-07-25 09:51:00'
+    AND id_sede= 3
+    ORDER BY fecha DESC;
+
+    -- Prueba sin especifica el id.
+SELECT id, fecha, id_cliente, id_sede
+	FROM pedidos
+    WHERE fecha BETWEEN '2026-07-16 14:55:00'  AND '2026-07-25 09:51:00'
+    ORDER BY fecha DESC;
+
+    -- 3. Listar los productos más vendidos (con JOIN y GROUP BY).
+SELECT P.id, P.nombre,
+	SUM(C.cantidad) AS total_unidades_vendidas
+FROM productos P 
+JOIN detalle_pedidos C ON P.id = C.id_producto
+GROUP BY P.id, P.nombre
+ORDER BY total_unidades_vendidas DESC
+LIMIT 4;
+-- 3.1 Listar los productos más vendidos (con JOIN y GROUP BY). Pero de una fecha especifica
+SELECT P.id, P.nombre,
+	'Julio 2026' AS periodo,
+	SUM(C.cantidad) AS total_unidades_vendidas
+FROM productos P 
+JOIN detalle_pedidos C ON P.id = C.id_producto
+JOIN pedidos E ON C.id_pedido = E.id
+WHERE MONTH(E.fecha)= 7 AND YEAR(E.fecha)= 2026
+GROUP BY P.id, P.nombre
+ORDER BY total_unidades_vendidas DESC
+LIMIT 3;
+    
+-- 4. Mostrar clientes y la cantidad de pedidos realizados.
+SELECT C.id, C.nombre_completo,
+	COUNT(P.id) AS cantidad_pedidos_por_cliente
+	FROM clientes C
+    JOIN pedidos P on P.id_cliente = C.id
+    GROUP BY C.id, C.nombre_completo
+    ORDER BY C.id ASC;
+-- 4.1 Mostrar las sedes y la cantidades de pedidos realizados.
+SELECT S.id, S.nombre,
+	COUNT(P.id_sede) 'Total de pedidos por sede'
+	FROM sedes S
+    JOIN pedidos P On P.id_sede = S.id
+    GROUP BY S.id, S.nombre
+    ORDER BY 'Total de pedidos por sede' ASC;
+
+    -- 5. Buscar clientes por nombre parcial usando LIKE.
+SELECT nombre_completo, id
+	FROM clientes
+    WHERE nombre_completo LIKE 'M%';
+
+-- 6. Productos de ciertas categorías (IN)
+SELECT * FROM productos WHERE id_categoria IN (1, 2, 3);
+
+-- 7. Cliente con mayor número de pedidos (subconsulta)
+SELECT id, nombre_completo 
+FROM clientes 
+WHERE id = (
+    SELECT id_cliente 
+    FROM pedidos 
+    GROUP BY id_cliente 
+    ORDER BY COUNT(*) DESC 
+    LIMIT 1
+);
+
+-- 8. Pedidos y sus totales agrupados por sede
+SELECT 
+    s.nombre AS sede,
+    COUNT(p.id) AS cantidad_pedidos,
+    SUM(p.total_sin_iva) AS subtotal_acumulado,
+    SUM(p.total_con_iva) AS total_acumulado
+FROM sedes s
+JOIN pedidos p ON s.id = p.id_sede
+GROUP BY s.id, s.nombre;
