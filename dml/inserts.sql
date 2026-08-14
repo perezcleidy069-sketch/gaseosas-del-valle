@@ -396,3 +396,8 @@ INSERT INTO categoria (id, nombre) VALUES
 (4, 'Naranja'),
 (5, 'Uva'),
 (6, 'Ginger Ale');
+
+INSERT INTO encargados (id, nombre, rol) VALUES
+(1, 'Marta Elena Rodríguez', 'Gerente de Operaciones y Logística'),
+(2, 'Roberto Carlos Suárez', 'Supervisor de Almacén Bucaramanga'),
+(3, 'Laura Camila Fuentes', 'Jefa de Bodega Piedecuesta');
