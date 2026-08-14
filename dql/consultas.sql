@@ -70,3 +70,15 @@ SELECT nombre_completo, id
 
 -- 6. Productos de ciertas categorías (IN)
 SELECT * FROM productos WHERE id_categoria IN (1, 2, 3);
+
+-- 7. Cliente con mayor número de pedidos (subconsulta)
+SELECT id, nombre_completo 
+FROM clientes 
+WHERE id = (
+    SELECT id_cliente 
+    FROM pedidos 
+    GROUP BY id_cliente 
+    ORDER BY COUNT(*) DESC 
+    LIMIT 1
+);
+
