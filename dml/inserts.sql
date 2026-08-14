@@ -380,3 +380,11 @@ INSERT INTO detalle_pedidos (id_pedido, id_producto, cantidad, subtotal) VALUES
 (100, 1, 30, 135.00),
 (100, 4, 100, 520.00),
 (100, 6, 5, 15.00);
+
+INSERT INTO productos(id, nombre, id_categoria, precio, volumen_ml, stock_actual, stock_minimo) VALUES
+(1, 'Kola Valle OriginaL', 1, 4500.00, '1500ml', 300, 100),
+(2, 'Kola Valle Zero', 2, 2500.00, '500ml', 500, 50),
+(3, 'Fresh Citrik', 3, 2000.00, '350ml', 600, 70),
+(4, 'Valle Naranjada ', 4, 5200.00, '2000ml', 400, 60),
+(5, 'Spark Uva Personal', 5, 1800.00, '250ml', 500, 70),
+(6, 'Valle Ginger Ale ', 6, 3000.00, '300ml', 340, 100);
