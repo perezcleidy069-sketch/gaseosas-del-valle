@@ -67,3 +67,14 @@ CREATE TABLE encargados (
     nombre VARCHAR(100) NOT NULL,
     rol VARCHAR(90) NOT NULL
 ) ENGINE=InnoDB;
+
+CREATE TABLE sedes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    ubicacion VARCHAR(100) NOT NULL,
+    id_municipio INT NOT NULL,
+    capacidad_almacenamiento INT NOT NULL,
+    id_encargado INT NOT NULL,
+    FOREIGN KEY (id_municipio) REFERENCES municipios(id),
+    FOREIGN KEY (id_encargado) REFERENCES encargados(id)
+) ENGINE=InnoDB;
