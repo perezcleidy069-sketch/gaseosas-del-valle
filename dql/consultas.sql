@@ -67,3 +67,6 @@ SELECT S.id, S.nombre,
 SELECT nombre_completo, id
 	FROM clientes
     WHERE nombre_completo LIKE 'M%';
+
+-- 6. Productos de ciertas categorías (IN)
+SELECT * FROM productos WHERE id_categoria IN (1, 2, 3);
