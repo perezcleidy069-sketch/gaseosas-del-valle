@@ -56,3 +56,8 @@ CREATE TABLE productos (
     stock_minimo INT NOT NULL,
     FOREIGN KEY (id_categoria) REFERENCES categoria(id)
 ) ENGINE=InnoDB;
+
+CREATE TABLE categoria (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL
+) ENGINE=InnoDB;
